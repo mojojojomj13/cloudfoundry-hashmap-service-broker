@@ -1,7 +1,7 @@
 login :
 ==============================================================================
-cf login -a api.run.pivotal.io -u <your email>
-password > <your password>
+cf login -a api.run.pivotal.io -u [your email]
+password > [your password]
 
 cf push eureka-service-prits -b java_buildpack
 OR
