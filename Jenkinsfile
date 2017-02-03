@@ -1,4 +1,4 @@
-node ('main') {
+node {
    def mvnHome
    stage('Preparation') {
       git 'https://github.com/mojojojomj13/cloudfoundry-hashmap-service-broker.git'         
