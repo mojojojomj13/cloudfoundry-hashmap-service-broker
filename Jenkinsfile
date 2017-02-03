@@ -1,5 +1,6 @@
 node {
    def mvnHome
+   def mvn
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/mojojojomj13/cloudfoundry-hashmap-service-broker.git'
@@ -7,13 +8,18 @@ node {
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
       mvnHome = tool 'M3'
+      if (isUnix()) {
+         mvn = ${mvnHome}/bin/mvn
+      }else{
+         mvn = ${mvnHome}\bin\mvn
+      }
    }
    stage('Build') {
       // Run the maven build
       if (isUnix()) {
-         sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package"
+         sh "${mvn} -Dmaven.test.failure.ignore clean package"
       } else {
-         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+         bat(/"${mvn}" -Dmaven.test.failure.ignore clean package/)
       }
    }
 //   stage('Results') {
