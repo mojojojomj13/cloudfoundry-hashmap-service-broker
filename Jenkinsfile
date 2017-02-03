@@ -9,9 +9,9 @@ node {
       // **       in the global configuration.           
       mvnHome = tool 'M3'
       if (isUnix()) {
-         mvn = ${mvnHome}/bin/mvn
+         mvn = "${mvnHome}/bin/mvn"
       }else{
-         mvn = ${mvnHome}\bin\mvn
+         mvn = "${mvnHome}\bin\mvn"
       }
    }
    stage('Build') {
